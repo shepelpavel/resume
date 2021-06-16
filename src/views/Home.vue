@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>This is an HelloWorld page</h1>
-    <HelloWorld msg="Welcome" />
+    <HelloWorld msg="HelloWorld" />
   </div>
 </template>
 
