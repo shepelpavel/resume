@@ -5,7 +5,10 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view v-if="wellcome_complete" />
-    <WellcomeModal @SubmitWellcomeModal="SubmitWellcomeModal" v-if="!wellcome_complete"/>
+    <WellcomeModal
+      @SubmitWellcomeModal="SubmitWellcomeModal"
+      v-if="!wellcome_complete"
+    />
   </div>
 </template>
 
