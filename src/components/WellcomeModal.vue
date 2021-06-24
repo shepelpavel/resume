@@ -3,7 +3,7 @@
     <form @submit.prevent="submitWellcome">
       <input type="text" v-model="name" :class="[name_err ? 'error' : '']" />
       <input type="text" v-model="company" />
-      <button type="submit">Send</button>
+      <button type="submit" :disabled="disable_btn">Send</button>
     </form>
   </div>
 </template>
@@ -13,6 +13,7 @@ export default {
   name: "WellcomeModal",
   data: function () {
     return {
+      disable_btn: false,
       name: "",
       name_err: false,
       company: "",
@@ -20,6 +21,7 @@ export default {
   },
   methods: {
     submitWellcome: function () {
+      this.disable_btn = true;
       if (this.name.length > 0) {
         this.$emit("SubmitWellcomeModal", {
           name: this.name,
@@ -27,6 +29,7 @@ export default {
         });
       } else {
         this.name_err = true;
+        this.disable_btn = false;
       }
     },
   },
