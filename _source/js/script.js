@@ -2,25 +2,12 @@ function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-function backgroundCanvasInit(_audio) {
+function backgroundCanvasInit(_pixel, _width, _height) {
     var canvas = document.getElementById('background_canvas');
     var context = canvas.getContext('2d');
-    var _width = document.documentElement.scrollWidth;
-    var _height = document.documentElement.scrollHeight;
 
     canvas.width = _width;
     canvas.height = _height;
-
-    var _pixel = {
-        posX: 600,
-        posY: _height / 2,
-        minposY: 0,
-        maxposY: _height - 3,
-        speed: 10,
-        width: 3,
-        height: 3,
-        color: '#cccccc'
-    };
 
     setInterval(function () {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -41,10 +28,7 @@ function backgroundCanvasInit(_audio) {
     }, 30);
 }
 
-function backgroundGridInit() {
-    var calc_h = document.documentElement.scrollHeight;
-    var calc_v = document.documentElement.scrollWidth;
-
+function backgroundGridInit(calc_v, calc_h) {
     var _hitems = Math.floor(calc_h / 400);
     var _vitems = Math.floor(calc_v / 400);
 
@@ -131,12 +115,38 @@ $(document).ready(function () {
         }
     });
 
-    backgroundGridInit();
-    backgroundCanvasInit();
+    var _WIDTH = document.documentElement.scrollWidth;
+    var _HEIGHT = document.documentElement.scrollHeight;
+    var _PIXEL = {
+        posX: 600,
+        posY: _HEIGHT / 2,
+        minposY: 0,
+        maxposY: _HEIGHT - 3,
+        speed: 10,
+        width: 3,
+        height: 3,
+        color: '#cccccc'
+    };
+    var _PREVEVENT, _CURREVENT;
+    $(document).mousemove(function (event) {
+        _CURREVENT = event;
+        if (_PREVEVENT && _CURREVENT) {
+            var movementX = Math.abs(_CURREVENT.screenX - _PREVEVENT.screenX);
+            var movementY = Math.abs(_CURREVENT.screenY - _PREVEVENT.screenY);
+            var speed = Math.sqrt(movementX * movementX + movementY * movementY);
+            _PIXEL.speed = speed;
+        }
+        _PREVEVENT = _CURREVENT;
+    });
+
+    backgroundGridInit(_WIDTH, _HEIGHT);
+    backgroundCanvasInit(_PIXEL, _WIDTH, _HEIGHT);
 
     $(window).on('resize', function () {
-        backgroundGridInit();
-        backgroundCanvasInit();
+        _WIDTH = document.documentElement.scrollWidth;
+        _HEIGHT = document.documentElement.scrollHeight;
+        backgroundGridInit(_WIDTH, _HEIGHT);
+        backgroundCanvasInit(_PIXEL, _WIDTH, _HEIGHT);
     });
 
 });
