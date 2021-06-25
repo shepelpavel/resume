@@ -15,6 +15,14 @@
 
 <body>
 
+    <div class="background">
+        <canvas id="background_canvas" class="background__canvas js-background-canvas"></canvas>
+        <div class="background__grid js-background-grid"></div>
+        <audio id="audio" loop>
+            <source src="/files/loop.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
     <div id="wellcome_modal" v-if="!wellcome_complete">
         <wellcome-modal @submit_wellcome_modal="SubmitWellcomeModal" />
     </div>
