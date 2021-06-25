@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>resume</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <link rel="stylesheet" href="/_assets/css/style.css" />
+</head>
+
+<body>
+
+    <div id="wellcome_modal" v-if="!wellcome_complete">
+        <wellcome-modal @submit_wellcome_modal="SubmitWellcomeModal" />
+    </div>
+    <div id="hello_world" v-if="wellcome_complete">
+        <hello-world />
+    </div>
+
+    <script src="/_assets/module/vue/vue.min.js"></script>
+    <script src="/_assets/module/jquery/jquery.min.js"></script>
+    <script src="/_assets/components/components.min.js"></script>
+    <script src="/_assets/js/bundle.min.js"></script>
+</body>
+
+</html>
