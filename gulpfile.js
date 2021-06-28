@@ -25,14 +25,14 @@ var path = {
         module: './_source/module/**/*.*',
     },
     build: {
-        js: './_assets/js/',
-        components: './_assets/components/',
-        style: './_assets/css/',
-        css: './_assets/css/',
-        img: './_assets/img/',
-        svg: './_assets/svg/',
-        font: './_assets/fonts/',
-        module: './_assets/module/',
+        js: './assets/js/',
+        components: './assets/components/',
+        style: './assets/css/',
+        css: './assets/css/',
+        img: './assets/img/',
+        svg: './assets/svg/',
+        font: './assets/fonts/',
+        module: './assets/module/',
     }
 };
 
