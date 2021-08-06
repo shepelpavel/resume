@@ -3,12 +3,11 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
     prefixer = require('gulp-autoprefixer'),
-    sass = require('gulp-sass'),
+    sass = require("gulp-sass")(require("node-sass")),
     cssnano = require('gulp-cssnano'),
     minify = require('gulp-babel-minify'),
     imagemin = require('gulp-imagemin'),
     svgmin = require('gulp-svgmin'),
-    cheerio = require('gulp-cheerio'),
     svgsprite = require('gulp-svg-sprite'),
     concat = require('gulp-concat');
 
