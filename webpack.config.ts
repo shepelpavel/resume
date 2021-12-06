@@ -1,7 +1,6 @@
 import path from "path";
-import { Configuration } from "webpack";
 
-const config: Configuration = {
+module.exports = {
   entry: "./src/index.tsx",
   module: {
     rules: [
@@ -19,6 +18,21 @@ const config: Configuration = {
           },
         },
       },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: "asset/inline",
+      },
+      {
+        test: /\.(png|jpe?g|gif|jp2|webp)$/,
+        loader: "file-loader",
+        options: {
+          name: "images/[name].[ext]",
+        },
+      },
     ],
   },
   resolve: {
@@ -31,8 +45,7 @@ const config: Configuration = {
   devServer: {
     static: path.join(__dirname, "docs"),
     compress: true,
+    open: false,
   },
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
 };
-
-export default config;
