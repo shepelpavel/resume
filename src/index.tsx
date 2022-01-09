@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import "./components/reset.scss";
-import "./components/var.scss";
-import "./components/fonts.scss";
-import "./components/animations.scss";
-import "./components/base.scss";
+// import axios from "axios";
+import "./components/css/reset.scss";
+import "./components/css/var.scss";
+import "./components/css/fonts.scss";
+import "./components/css/animations.scss";
+import "./components/css/base.scss";
 
-import "./components/background.scss";
+import Background from "./components/background/Background";
 
-import myImg from "./static/image/style/image.png";
-
-const App = () => {
+export default function App() {
+  const windowSize: {
+    width: number;
+    height: number;
+  } = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
   return (
-    <div className="h1">
-      React application title
-      <img src={myImg} />
+    <div>
+      <Background windowSize={windowSize} />
+      <div className="h1">React application title</div>
+      <div className="h1">React application title</div>
     </div>
   );
-};
+}
 
 ReactDOM.render(
   <React.StrictMode>
