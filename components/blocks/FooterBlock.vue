@@ -1,11 +1,9 @@
 <template>
-  <div>
-    123
-  </div>
+  <footer>FooterBlock</footer>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'FooterBlock',
 }
 </script>

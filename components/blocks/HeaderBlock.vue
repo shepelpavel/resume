@@ -1,11 +1,9 @@
 <template>
-  <div>
-    123
-  </div>
+  <header>HeaderBlock</header>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'HeaderBlock',
 }
 </script>
